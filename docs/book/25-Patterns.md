@@ -122,8 +122,23 @@ abstract class ApplicationFramework {
 
     abstract void customize1();
 
-    abstract void customize2(); // "private" means automatically "final": private void templateMethod() { IntStream.range(0, 5).forEach( n -> { customize1(); customize2(); }); }}// Create a new "application": class MyApp extends ApplicationFramework { @Override void customize1() { System.out.print("Hello "); }@Override
+    abstract void customize2(); 
+    
+    // "private" means automatically "final": 
+    private void templateMethod() {
+        IntStream.range(0, 5).forEach( n -> { customize1(); customize2(); }); 
+    }
+}
 
+// Create a new "application": 
+class MyApp extends ApplicationFramework {
+
+    @Override 
+    void customize1() { 
+        System.out.print("Hello "); 
+    }
+    
+    @Override
     void customize2() {
         System.out.println("World!");
     }
@@ -245,8 +260,20 @@ class State implements StateBase {
     @Override
     public void changeImp(StateBase newImp) {
         implementation = newImp;
-    }// Pass method calls to the implementation: @Override public void f() { implementation.f(); } @Override public void g() { implementation.g(); } @Override
-
+    }
+    
+    // Pass method calls to the implementation: 
+    @Override 
+    public void f() { 
+        implementation.f(); 
+    } 
+    
+    @Override 
+    public void g() { 
+        implementation.g(); 
+        } 
+        
+    @Override
     public void h() {
         implementation.h();
     }
